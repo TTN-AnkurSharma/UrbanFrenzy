@@ -1,7 +1,6 @@
 package com.ttnBootcampProjects.Ecommerce.entity.order;
 
-import com.ttnBootcampProjects.Ecommerce.enums.FromStatus;
-import com.ttnBootcampProjects.Ecommerce.enums.ToStatus;
+import com.ttnBootcampProjects.Ecommerce.enums.OrderStatusType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,15 +16,18 @@ import java.util.UUID;
 public class OrderStatus {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID orderStatusId;
+
     @ManyToOne
     @JoinColumn(name = "orderProductId")
     private OrderProduct orderProduct;
 
     @Enumerated(EnumType.STRING)
-    private FromStatus fromStatus;
+    private OrderStatusType fromStatus;
 
     @Enumerated(EnumType.STRING)
-    private ToStatus toStatus;
+    private OrderStatusType toStatus;
 
     private String transitionNotesComment;
 

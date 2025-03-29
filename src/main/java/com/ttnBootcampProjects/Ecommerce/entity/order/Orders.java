@@ -4,6 +4,7 @@ import com.ttnBootcampProjects.Ecommerce.entity.users.Customer;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -21,18 +22,20 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
     private UUID orderId;
+
     @ManyToOne
     @JoinColumn(name = "customerUserId",referencedColumnName = "userId")
     private Customer customer;
-    private Double amountPaid;
+
+    private BigDecimal amountPaid;
     private LocalDate dateCreated;
     private String paymentMethod;
     private String customerAddressCity;
     private String customerAddressState;
     private String customerAddressCountry;
     private String customerAddressAddressLine;
-    private int customerAddressZipCode;
-  private String customerAddressLabel;
+    private Integer customerAddressZipCode;
+     private String customerAddressLabel;
 
   @OneToMany(mappedBy = "order")
   private List<OrderProduct> orderProductList;

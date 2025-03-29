@@ -4,6 +4,7 @@ import com.ttnBootcampProjects.Ecommerce.entity.product.ProductVariation;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,16 +22,16 @@ public class OrderProduct {
 
     @ManyToOne
     @JoinColumn(name = "orderId")
-
     private Orders order;
-    private int quantity;
-    private double price;
+
+    private Integer quantity;
+    private BigDecimal price;
 
     @ManyToOne
     @JoinColumn(name = "productVariationId")
     private ProductVariation productVariation;
-
-    @OneToMany(mappedBy = "orderProduct")
-    private List<OrderStatus> orderStatus;
+//
+//    @OneToMany(mappedBy = "orderProduct")
+//    private List<OrderStatus> orderStatus;
 
 }

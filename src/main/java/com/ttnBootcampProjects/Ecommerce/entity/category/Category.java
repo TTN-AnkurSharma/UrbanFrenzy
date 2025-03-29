@@ -19,9 +19,11 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
     private UUID categoryId;
+
     private String name;
+
     @ManyToOne
-    @JoinColumn(name = "parentCategoryId") // Foreign key in child pointing to the parent
+    @JoinColumn(name = "parentCategoryId")
     private Category parentCategory;
 
     @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

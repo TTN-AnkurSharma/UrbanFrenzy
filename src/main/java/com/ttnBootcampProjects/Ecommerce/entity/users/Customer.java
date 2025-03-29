@@ -26,7 +26,4 @@ public class Customer extends User{
 
     @OneToMany(mappedBy = "customer")
     private List<Cart> carts;
-
-    @ManyToMany(mappedBy = "customers")
-    private List<ProductVariation> productVariationList;
 }

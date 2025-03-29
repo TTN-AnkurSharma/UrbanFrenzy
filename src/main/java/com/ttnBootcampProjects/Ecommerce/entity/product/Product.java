@@ -30,15 +30,15 @@ public class Product {
     @JoinColumn(name = "categoryId")
     private Category category;
 
-    private boolean isCancellable;
+    private Boolean isCancellable;
 
-    private boolean isReturnable;
+    private Boolean isReturnable;
 
     private String brand;
 
-    private boolean isActive;
+    private Boolean isActive;
 
-    private boolean isDeleted;
+    private Boolean isDeleted;
 
     @OneToMany(mappedBy = "product")
     private List<ProductVariation> productVariationList;

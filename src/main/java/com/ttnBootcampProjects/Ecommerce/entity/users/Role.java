@@ -3,7 +3,7 @@ package com.ttnBootcampProjects.Ecommerce.entity.users;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -23,6 +23,6 @@ public class Role {
     @JoinTable(name = "userRole",
             joinColumns = @JoinColumn(name = "roleId"),
             inverseJoinColumns = @JoinColumn(name = "userId"))
-   private List<User> userList;
+   private Set<User> userList;
 
 }

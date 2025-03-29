@@ -1,10 +1,16 @@
 package com.ttnBootcampProjects.Ecommerce.entity.users;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -20,13 +26,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
     private UUID userId;
-
-    @Column(name = "email",unique = true)
+    @Column(name = "email")
     private String emailId;
+
     private String firstName;
+
     private String middleName;
     private String lastName;
     private String password;
+
     private boolean isDeleted;
     private boolean isActive;
     private boolean isExpired;
@@ -35,20 +43,12 @@ public class User {
     private LocalDate passwordUpdateDate;
 
     @ManyToMany(mappedBy = "userList")
-    private List<Role> roles;
+    private Set<Role> roles;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
-    private List<Address> addresses;
+    private Set<Address> addresses;
 
-    @PrePersist
-    private void setDefaultValues()
-    {
-        this.isDeleted=false;
-        this.isActive=true;
-        this.isExpired=false;
-        this.isLocked=false;
-        this.passwordUpdateDate= LocalDate.now();
-    }
+
 }
 

@@ -25,7 +25,7 @@ public class Address {
 
     private String addressLine;
 
-    private int zipCode;
+    private String zipCode;
 
     private String label;
 

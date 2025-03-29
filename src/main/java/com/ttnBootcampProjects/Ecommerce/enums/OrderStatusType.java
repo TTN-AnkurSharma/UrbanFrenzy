@@ -1,6 +1,6 @@
 package com.ttnBootcampProjects.Ecommerce.enums;
 
-public enum ToStatus {
+public enum OrderStatusType {
     ORDER_CONFIRMED,
     ORDER_REJECTED,
     REFUND_INITIATED,
@@ -13,5 +13,7 @@ public enum ToStatus {
     RETURN_APPROVED,
     PICK_UP_INITIATED,
     PICK_UP_COMPLETED,
-    REFUND_COMPLETED
+    REFUND_COMPLETED,
+    ORDER_PLACED,
+
 }
