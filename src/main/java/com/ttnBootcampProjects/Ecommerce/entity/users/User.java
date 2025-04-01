@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 
 import java.time.LocalDate;
@@ -20,6 +22,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @ToString
 @Inheritance(strategy = InheritanceType.JOINED)
+@SQLDelete(sql = "update user set is_deleted=true where id=?")
+@Where(clause = "is_deleted=false")
 public class User {
 
     @Id

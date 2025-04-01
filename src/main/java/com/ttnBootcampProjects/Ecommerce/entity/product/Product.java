@@ -5,6 +5,8 @@ import com.ttnBootcampProjects.Ecommerce.entity.users.Customer;
 import com.ttnBootcampProjects.Ecommerce.entity.users.Seller;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,6 +17,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@SQLDelete(sql = "update product set is_deleted=true where id=?")
+@Where(clause = "is_deleted=false")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
